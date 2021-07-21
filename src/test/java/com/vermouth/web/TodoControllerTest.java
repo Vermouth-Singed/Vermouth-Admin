@@ -33,8 +33,6 @@ class TodoControllerTest {
         this.expected = TodoModel.builder()
                 .id(123L)
                 .title("Test Title")
-                .order(0L)
-                .completed(false)
                 .build();
     }
 
@@ -45,9 +43,7 @@ class TodoControllerTest {
             TodoRequest todoRequest = i.getArgument(0, TodoRequest.class);
             return new TodoModel(
                 this.expected.getId(),
-                todoRequest.getTitle(),
-                this.expected.getOrder(),
-                this.expected.getCompleted()
+                todoRequest.getTitle()
             );
         });
 

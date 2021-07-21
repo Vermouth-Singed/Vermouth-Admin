@@ -45,8 +45,6 @@ class TodoServiceTest {
         TodoModel todoModel = TodoModel.builder()
                 .id(123L)
                 .title("Title")
-                .order(0L)
-                .completed(false)
                 .build();
 
         Optional<TodoModel> optional = Optional.of(todoModel);
@@ -59,8 +57,6 @@ class TodoServiceTest {
 
         assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getTitle(), actual.getTitle());
-        assertEquals(expected.getOrder(), actual.getOrder());
-        assertEquals(expected.getCompleted(), actual.getCompleted());
     }
 
     @Test

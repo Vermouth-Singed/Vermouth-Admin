@@ -19,10 +19,4 @@ public class TodoModel {
 
     @Column(nullable = false)
     private String title;
-
-    @Column(name = "todoOrder", nullable = false)
-    private Long order;
-
-    @Column(nullable = false)
-    private Boolean completed;
 }

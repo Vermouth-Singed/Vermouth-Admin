@@ -28,14 +28,6 @@ public class TodoController {
             return ResponseEntity.badRequest().build();
         }
 
-        if(ObjectUtils.isEmpty(todoRequest.getOrder())){
-            todoRequest.setOrder(0L);
-        }
-
-        if(ObjectUtils.isEmpty(todoRequest.getCompleted())){
-            todoRequest.setCompleted(false);
-        }
-
         return ResponseEntity.ok(
             new TodoResponse(this.todoService.add(todoRequest))
         );

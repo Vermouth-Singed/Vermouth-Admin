@@ -18,8 +18,6 @@ public class TodoService {
     public TodoModel add(TodoRequest todoRequest){
         TodoModel todoModel = TodoModel.builder()
             .title(todoRequest.getTitle())
-            .order(todoRequest.getOrder())
-            .completed(todoRequest.getCompleted())
             .build();
 
         return this.todoRepository.save(todoModel);
@@ -39,14 +37,6 @@ public class TodoService {
 
         if(todoRequest.getTitle() != null){
             todoModel.setTitle(todoRequest.getTitle());
-        }
-
-        if(todoRequest.getOrder() != null){
-            todoModel.setOrder(todoRequest.getOrder());
-        }
-
-        if(todoRequest.getCompleted() != null){
-            todoModel.setCompleted(todoRequest.getCompleted());
         }
 
         return this.todoRepository.save(todoModel);
