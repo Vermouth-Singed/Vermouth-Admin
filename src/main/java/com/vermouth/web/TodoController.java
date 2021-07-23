@@ -3,6 +3,8 @@ package com.vermouth.web;
 import com.vermouth.model.TodoRequest;
 import com.vermouth.model.TodoResponse;
 import com.vermouth.service.TodoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,12 @@ import java.util.stream.Collectors;
 @CrossOrigin
 @AllArgsConstructor
 @RequestMapping("/api/todo")
+@Api(tags = "Todo 컨트롤러")
 public class TodoController {
     private final TodoService todoService;
 
     @PostMapping
+    @ApiOperation(value = "생성")
     public ResponseEntity<TodoResponse> create(@RequestBody TodoRequest todoRequest){
         log.info("CREATE");
 
@@ -34,6 +38,7 @@ public class TodoController {
     }
 
     @GetMapping("{id}")
+    @ApiOperation(value = "한개만 읽기")
     public ResponseEntity<TodoResponse> readOne(@PathVariable Long id){
         log.info("READ ONE");
 
@@ -43,6 +48,7 @@ public class TodoController {
     }
 
     @GetMapping
+    @ApiOperation(value = "전체 읽기")
     public ResponseEntity<List<TodoResponse>> readAll(){
         log.info("READ ALL");
 
@@ -53,6 +59,7 @@ public class TodoController {
     }
 
     @PatchMapping("{id}")
+    @ApiOperation(value = "수정")
     public ResponseEntity<TodoResponse> update(@PathVariable Long id, @RequestBody TodoRequest todoRequest){
         log.info("UPDATE");
 
@@ -62,6 +69,7 @@ public class TodoController {
     }
 
     @DeleteMapping("{id}")
+    @ApiOperation(value = "한개만 삭제")
     public ResponseEntity<?> deleteOne(@PathVariable Long id){
         log.info("DELETE");
 
@@ -71,6 +79,7 @@ public class TodoController {
     }
 
     @DeleteMapping
+    @ApiOperation(value = "전체 삭제")
     public ResponseEntity<?> deleteAll(){
         log.info("DELETE ALL");
 

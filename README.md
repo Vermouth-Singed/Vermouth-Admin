@@ -1,6 +1,6 @@
 # Vermouth-Admin
 ## 2021 Spring Boot New Setting
-### 진행상황
-- H2 Database 연동
+### 컨트롤러 예시
+- Swagger v3.0
 - 이미지
-![image](https://user-images.githubusercontent.com/24692694/126660000-dcfa3273-4a3c-407d-88fa-bfb1dbc1435d.png)
+  ![image](https://user-images.githubusercontent.com/24692694/126839306-1e3b0cff-4609-4647-8f7e-5827efd4e7cd.png)
