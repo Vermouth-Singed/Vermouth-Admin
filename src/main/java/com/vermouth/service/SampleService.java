@@ -22,8 +22,8 @@ public class SampleService {
         try{
             SampleEntity sampleEntity = SampleEntity.builder().
                 title(title).
-                description(description)
-                .build();
+                description(description).
+                build();
 
             sampleRepository.save(sampleEntity);
         }catch (Exception e){
