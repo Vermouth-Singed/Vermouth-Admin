@@ -21,10 +21,30 @@ public class SampleController {
     @PostMapping()
     @ApiOperation(value = "생성")
     public ApiResult create(@RequestBody SampleDto sampleDto){
-        log.info("CREATE");
+        log.info("Create");
 
         return new ApiResult(
             sampleService.create(sampleDto.getTitle(), sampleDto.getDescription())
+        );
+    }
+
+    @GetMapping("list/{pageNo}/{rowSize}")
+    @ApiOperation(value = "리스트 읽기")
+    public ApiResult readList(SampleDto sampleDto){
+        log.info("Read List");
+
+        return new ApiResult(
+            sampleService.readList(sampleDto.getPageNo(), sampleDto.getRowSize())
+        );
+    }
+
+    @GetMapping("one/{id}")
+    @ApiOperation(value = "리스트 읽기")
+    public ApiResult readOne(@PathVariable Long id){
+        log.info("Read One");
+
+        return new ApiResult(
+            sampleService.readOne(id)
         );
     }
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SampleDto {
+public class SampleDto extends CommonDto{
     private String title;
     private String description;
 }
