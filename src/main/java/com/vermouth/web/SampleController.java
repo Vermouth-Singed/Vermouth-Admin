@@ -24,7 +24,9 @@ public class SampleController {
         log.info("Create");
 
         return new ApiResult(
-            sampleService.create(sampleDto.getTitle(), sampleDto.getDescription())
+            sampleService.create(
+                sampleDto.getTitle(), sampleDto.getDescription()
+            )
         );
     }
 
@@ -34,17 +36,42 @@ public class SampleController {
         log.info("Read List");
 
         return new ApiResult(
-            sampleService.readList(sampleDto.getPageNo(), sampleDto.getRowSize())
+            sampleService.readList(
+                sampleDto.getPageNo(), sampleDto.getRowSize()
+            )
         );
     }
 
     @GetMapping("one/{id}")
-    @ApiOperation(value = "리스트 읽기")
+    @ApiOperation(value = "한개 읽기")
     public ApiResult readOne(@PathVariable Long id){
         log.info("Read One");
 
         return new ApiResult(
             sampleService.readOne(id)
+        );
+    }
+
+    @PatchMapping("{id}")
+    @ApiOperation(value = "수정")
+    public ApiResult update(@PathVariable Long id,
+                            @RequestBody SampleDto sampleDto){
+        log.info("Update");
+
+        return new ApiResult(
+            sampleService.update(
+                id, sampleDto.getTitle(), sampleDto.getDescription()
+            )
+        );
+    }
+
+    @DeleteMapping("{id}")
+    @ApiOperation(value = "삭제")
+    public ApiResult delete(@PathVariable Long id){
+        log.info("Delete");
+
+        return new ApiResult(
+            sampleService.delete(id)
         );
     }
 }
