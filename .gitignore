@@ -15,6 +15,10 @@
 
 ### IntelliJ IDEA ###
 .idea
+wrapper
+log
+.jpb
+gradlew
 *.iws
 *.iml
 *.ipr
