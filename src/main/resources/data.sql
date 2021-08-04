@@ -1,13 +1,3 @@
-INSERT INTO todo_model(title) VALUES('title1');
-INSERT INTO todo_model(title) VALUES('title2');
-INSERT INTO todo_model(title) VALUES('title3');
-INSERT INTO todo_model(title) VALUES('title4');
-INSERT INTO todo_model(title) VALUES('title5');
-INSERT INTO todo_model(title) VALUES('title6');
-INSERT INTO todo_model(title) VALUES('title7');
-INSERT INTO todo_model(title) VALUES('title8');
-INSERT INTO todo_model(title) VALUES('title9');
-
 INSERT INTO sample_board(title, description) VALUES('제목01', '내용01');
 INSERT INTO sample_board(title, description) VALUES('제목02', '내용02');
 INSERT INTO sample_board(title, description) VALUES('제목03', '내용03');

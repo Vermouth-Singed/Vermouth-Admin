@@ -19,6 +19,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+  output:
+    ansi:
+      enabled: always
 server:
   port: 8080
   error:
