@@ -84,16 +84,13 @@ public class SampleService {
         try{
             Optional<SampleEntity> sampleEntity = sampleRepository.findById(id);
 
-            sampleEntity.map(map -> {
-                SampleEntity entity = SampleEntity.builder().
-                    id(id).
-                    title(title).
-                    description(description).
-                    build();
+            sampleEntity.map(entity -> {
+                entity.setTitle(title).
+                    setDescription(description);
 
                 sampleRepository.save(entity);
 
-                return map;
+                return entity;
             }).orElseGet(() -> {
                 result.put("msg", ErrorMSG.NOTEXIST_ERROR.msg());
 
