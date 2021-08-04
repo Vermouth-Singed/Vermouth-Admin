@@ -43,7 +43,7 @@ public class SampleService {
 
         try{
             result.put("list", sampleRepository.findAll(
-                PageRequest.of(pageNo-1, rowSize, Sort.by("id").descending())
+                PageRequest.of(pageNo-1, rowSize, Sort.by("id"))
             ).getContent());
         }catch (Exception e){
             result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
