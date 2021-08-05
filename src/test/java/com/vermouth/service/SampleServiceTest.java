@@ -101,8 +101,7 @@ class SampleServiceTest {
 
     @Test
     @DisplayName("Sample 삭제")
-    @Deprecated
-    void delete() {
+    void sample_삭제() {
         when(
             sampleRepository.findById(anyLong())).
                 thenReturn(Optional.of(sampleEntity)
