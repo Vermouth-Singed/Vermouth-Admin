@@ -16,8 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -53,7 +52,7 @@ class SampleControllerTest {
     @DisplayName("Sample 생성")
     void sample_생성() throws Exception{
         given(sampleService.create(
-            "title", "description"
+            sampleDto.getTitle(), sampleDto.getDescription()
         )).willReturn(result);
 
         mvc.perform(
@@ -81,18 +80,50 @@ class SampleControllerTest {
         );
     }
 
-//    @Test
-//    @DisplayName("Sample 리스트 읽기")
-//    void readList() {
-//    }
-//
-//    @Test
-//    @DisplayName("Sample 수정")
-//    void update() {
-//    }
-//
-//    @Test
-//    @DisplayName("Sample 삭제")
-//    void delete() {
-//    }
+    @Test
+    @DisplayName("Sample 리스트 읽기")
+    void sample_리스트읽기() throws Exception{
+        given(sampleService.readList(1, 1)).willReturn(result);
+
+        mvc.perform(get("/api/sample/list/1/1")).
+        andDo(print()).
+        andExpect(status().isOk()).
+        andExpect(
+            jsonPath("$.msg").value("success")
+        );
+    }
+
+    @Test
+    @DisplayName("Sample 수정")
+    void sample_수정() throws Exception{
+        given(
+            sampleService.update(
+                1L, sampleDto.getTitle(), sampleDto.getDescription()
+            )
+        ).willReturn(result);
+
+        mvc.perform(
+            patch("/api/sample/1").
+                contentType(MediaType.APPLICATION_JSON).
+                content(objectMapper.writeValueAsString(sampleDto))
+        ).
+        andDo(print()).
+        andExpect(status().isOk()).
+        andExpect(
+            jsonPath("$.msg").value("success")
+        );
+    }
+
+    @Test
+    @DisplayName("Sample 삭제")
+    void sample_삭제() throws Exception{
+        given(sampleService.delete(1L)).willReturn(result);
+
+        mvc.perform(delete("/api/sample/1")).
+        andDo(print()).
+        andExpect(status().isOk()).
+        andExpect(
+            jsonPath("$.msg").value("success")
+        );
+    }
 }
