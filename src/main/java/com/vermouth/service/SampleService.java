@@ -42,7 +42,7 @@ public class SampleService {
         Map<String, Object> result = new HashMap<>();
 
         try{
-            result.put("list", sampleRepository.findAll(
+            result.put("data", sampleRepository.findAll(
                 PageRequest.of(pageNo-1, rowSize, Sort.by("id"))
             ).getContent());
         }catch (Exception e){
@@ -61,7 +61,7 @@ public class SampleService {
             Optional<SampleEntity> sampleEntity = sampleRepository.findById(id);
 
             sampleEntity.map(entity -> {
-                result.put("entity", entity);
+                result.put("data", entity);
 
                 return entity;
             }).orElseGet(() -> {

@@ -21,6 +21,7 @@ public class SampleController {
     @PostMapping()
     @ApiOperation(value = "생성")
     public ApiResult create(@RequestBody SampleDto sampleDto){
+//        http post localhost:8080/api/sample title=title description=description
         log.info("Create");
 
         return new ApiResult(
@@ -33,6 +34,7 @@ public class SampleController {
     @GetMapping("list/{pageNo}/{rowSize}")
     @ApiOperation(value = "리스트 읽기")
     public ApiResult readList(SampleDto sampleDto){
+//        http get localhost:8080/api/sample/list/1/1
         log.info("Read List");
 
         return new ApiResult(
@@ -45,6 +47,7 @@ public class SampleController {
     @GetMapping("one/{id}")
     @ApiOperation(value = "한개 읽기")
     public ApiResult readOne(@PathVariable Long id){
+//        http get localhost:8080/api/sample/one/1
         log.info("Read One");
 
         return new ApiResult(
@@ -56,6 +59,7 @@ public class SampleController {
     @ApiOperation(value = "수정")
     public ApiResult update(@PathVariable Long id,
                             @RequestBody SampleDto sampleDto){
+//        http patch localhost:8080/api/sample/1 title=제목수정
         log.info("Update");
 
         return new ApiResult(
@@ -68,6 +72,7 @@ public class SampleController {
     @DeleteMapping("{id}")
     @ApiOperation(value = "삭제")
     public ApiResult delete(@PathVariable Long id){
+//        http delete localhost:8080/api/sample/1
         log.info("Delete");
 
         return new ApiResult(
