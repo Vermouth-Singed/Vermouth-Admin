@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import static com.vermouth.model.ApiResult.OK;
+
 @Slf4j
 @RestController
 @CrossOrigin
@@ -24,7 +26,7 @@ public class SampleController {
 //        http post localhost:8080/api/sample title=title description=description
         log.info("Create");
 
-        return new ApiResult(
+        return OK(
             sampleService.create(
                 sampleDto.getTitle(), sampleDto.getDescription()
             )
@@ -37,7 +39,7 @@ public class SampleController {
 //        http get localhost:8080/api/sample/list/1/1
         log.info("Read List");
 
-        return new ApiResult(
+        return OK(
             sampleService.readList(
                 sampleDto.getPageNo(), sampleDto.getRowSize()
             )
@@ -50,7 +52,7 @@ public class SampleController {
 //        http get localhost:8080/api/sample/one/1
         log.info("Read One");
 
-        return new ApiResult(
+        return OK(
             sampleService.readOne(id)
         );
     }
@@ -62,7 +64,7 @@ public class SampleController {
 //        http patch localhost:8080/api/sample/1 title=제목수정
         log.info("Update");
 
-        return new ApiResult(
+        return OK(
             sampleService.update(
                 id, sampleDto.getTitle(), sampleDto.getDescription()
             )
@@ -75,7 +77,7 @@ public class SampleController {
 //        http delete localhost:8080/api/sample/1
         log.info("Delete");
 
-        return new ApiResult(
+        return OK(
             sampleService.delete(id)
         );
     }
