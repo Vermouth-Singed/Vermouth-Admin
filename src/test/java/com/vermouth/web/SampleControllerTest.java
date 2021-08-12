@@ -3,9 +3,7 @@ package com.vermouth.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vermouth.model.SampleDto;
 import com.vermouth.service.SampleService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -22,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(SampleController.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName("Sample 컨트롤러 테스트")
 class SampleControllerTest {
     @Autowired
@@ -37,7 +36,7 @@ class SampleControllerTest {
 
     private SampleDto sampleDto;
 
-    @BeforeEach
+    @BeforeAll
     void setup(){
         this.result = new HashMap<>();
         this.result.put("msg","success");

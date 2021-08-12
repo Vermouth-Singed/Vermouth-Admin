@@ -2,9 +2,7 @@ package com.vermouth.service;
 
 import com.vermouth.model.SampleEntity;
 import com.vermouth.service.repository.SampleRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,6 +20,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("Sample 서비스 테스트")
 class SampleServiceTest {
     @InjectMocks
     private SampleService sampleService;
