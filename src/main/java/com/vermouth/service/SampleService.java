@@ -58,9 +58,9 @@ public class SampleService {
         Map<String, Object> result = new HashMap<>();
 
         try{
-            Optional<SampleEntity> sampleEntity = sampleRepository.findById(id);
+            Optional<SampleEntity> maybeEntity = sampleRepository.findById(id);
 
-            sampleEntity.map(entity -> {
+            maybeEntity.map(entity -> {
                 result.put("data", entity);
 
                 return entity;
@@ -82,9 +82,9 @@ public class SampleService {
         Map<String, Object> result = new HashMap<>();
 
         try{
-            Optional<SampleEntity> sampleEntity = sampleRepository.findById(id);
+            Optional<SampleEntity> maybeEntity = sampleRepository.findById(id);
 
-            sampleEntity.map(entity -> {
+            maybeEntity.map(entity -> {
                 entity.setTitle(title).
                     setDescription(description);
 
@@ -109,9 +109,9 @@ public class SampleService {
         Map<String, Object> result = new HashMap<>();
 
         try{
-            Optional<SampleEntity> sampleEntity = sampleRepository.findById(id);
+            Optional<SampleEntity> maybeEntity = sampleRepository.findById(id);
 
-            sampleEntity.map(entity -> {
+            maybeEntity.map(entity -> {
                 sampleRepository.delete(entity);
 
                 return entity;
