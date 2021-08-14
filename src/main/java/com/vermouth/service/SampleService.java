@@ -32,7 +32,9 @@ public class SampleService {
         }catch (Exception e){
             result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
 
-            log.error(ErrorMSG.UNPREDICTABLE_ERROR.msg(), e);
+            log.error(
+                ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
+            );
         }
 
         return result;
@@ -48,7 +50,9 @@ public class SampleService {
         }catch (Exception e){
             result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
 
-            log.error(ErrorMSG.UNPREDICTABLE_ERROR.msg(), e);
+            log.error(
+                ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
+            );
         }
 
         return result;
@@ -72,7 +76,9 @@ public class SampleService {
         }catch (Exception e){
             result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
 
-            log.error(ErrorMSG.UNPREDICTABLE_ERROR.msg(), e);
+            log.error(
+                ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
+            );
         }
 
         return result;
@@ -99,7 +105,9 @@ public class SampleService {
         }catch (Exception e){
             result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
 
-            log.error(ErrorMSG.UNPREDICTABLE_ERROR.msg(), e);
+            log.error(
+                ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
+            );
         }
 
         return result;
@@ -123,7 +131,9 @@ public class SampleService {
         }catch (Exception e){
             result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
 
-            log.error(ErrorMSG.UNPREDICTABLE_ERROR.msg(), e);
+            log.error(
+                ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
+            );
         }
 
         return result;
