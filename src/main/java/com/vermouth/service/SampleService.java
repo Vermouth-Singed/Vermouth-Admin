@@ -62,9 +62,7 @@ public class SampleService {
         Map<String, Object> result = new HashMap<>();
 
         try{
-            Optional<SampleEntity> maybeEntity = sampleRepository.findById(id);
-
-            maybeEntity.map(entity -> {
+            sampleRepository.findById(id).map(entity -> {
                 result.put("data", entity);
 
                 return entity;
