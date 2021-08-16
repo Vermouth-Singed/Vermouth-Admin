@@ -89,8 +89,9 @@ public class SampleService {
             Optional<SampleEntity> maybeEntity = sampleRepository.findById(id);
 
             maybeEntity.map(entity -> {
-                entity.setTitle(title).
-                    setDescription(description);
+                entity.setTitle(title != null ? title : entity.getTitle()).
+                    setDescription(description != null ?
+                        description : entity.getDescription());
 
                 sampleRepository.save(entity);
 
