@@ -57,11 +57,11 @@ public class SampleController {
         );
     }
 
-    @PatchMapping("{id}")
+    @PutMapping("{id}")
     @ApiOperation(value = "수정")
     public ApiResult update(@PathVariable Long id,
                             @RequestBody SampleDto sampleDto){
-//        http patch localhost:8080/api/sample/1 title=제목수정
+//        http put localhost:8080/api/sample/1 title=제목수정
         log.info("Update");
 
         return OK(
