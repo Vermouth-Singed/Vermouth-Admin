@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class SampleService {
     private final SampleRepository sampleRepository;
 
+    @Transactional
     public Map<String, Object> create(String title, String description) {
         Map<String, Object> result = new HashMap<>();
 
@@ -30,16 +32,17 @@ public class SampleService {
 
             sampleRepository.save(sampleEntity);
         }catch (Exception e){
-            result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
-
             log.error(
                 ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
             );
+
+            throw new RuntimeException();
         }
 
         return result;
     }
 
+    @Transactional(readOnly = true)
     public Map<String, Object> readList(int pageNo, int rowSize) {
         Map<String, Object> result = new HashMap<>();
 
@@ -48,16 +51,17 @@ public class SampleService {
                 PageRequest.of(pageNo-1, rowSize, Sort.by("id"))
             ).getContent());
         }catch (Exception e){
-            result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
-
             log.error(
                 ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
             );
+
+            throw new RuntimeException();
         }
 
         return result;
     }
 
+    @Transactional(readOnly = true)
     public Map<String, Object> readOne(Long id) {
         Map<String, Object> result = new HashMap<>();
 
@@ -72,16 +76,17 @@ public class SampleService {
                 return null;
             });
         }catch (Exception e){
-            result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
-
             log.error(
                 ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
             );
+
+            throw new RuntimeException();
         }
 
         return result;
     }
 
+    @Transactional
     public Map<String, Object> update(Long id, String title, String description) {
         Map<String, Object> result = new HashMap<>();
 
@@ -102,16 +107,17 @@ public class SampleService {
                 return null;
             });
         }catch (Exception e){
-            result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
-
             log.error(
                 ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
             );
+
+            throw new RuntimeException();
         }
 
         return result;
     }
 
+    @Transactional
     public Map<String, Object> delete(Long id) {
         Map<String, Object> result = new HashMap<>();
 
@@ -128,11 +134,11 @@ public class SampleService {
                 return null;
             });
         }catch (Exception e){
-            result.put("msg", ErrorMSG.UNPREDICTABLE_ERROR.msg());
-
             log.error(
                 ErrorMSG.UNPREDICTABLE_ERROR.msg() + ": {}", e.getMessage(), e
             );
+
+            throw new RuntimeException();
         }
 
         return result;
