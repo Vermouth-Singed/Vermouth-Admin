@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import java.util.*;
 import java.util.function.Function;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
@@ -52,7 +53,9 @@ class SampleServiceTest {
             sampleEntity.getTitle(), sampleEntity.getDescription()
         );
 
-        assertEquals(map.get("msg"), null);
+        assertAll(
+            ()->assertEquals(map.get("msg"), null)
+        );
     }
 
     @Test
@@ -66,7 +69,9 @@ class SampleServiceTest {
             1, 1
         );
 
-        assertEquals(map.get("msg"), null);
+        assertAll(
+            ()->assertEquals(map.get("msg"), null)
+        );
     }
 
     @Test
@@ -79,7 +84,9 @@ class SampleServiceTest {
 
         Map<String, Object> map = this.sampleService.readOne(anyLong());
 
-        assertEquals(map.get("msg"), null);
+        assertAll(
+            ()->assertEquals(map.get("msg"), null)
+        );
     }
 
     @Test
@@ -95,7 +102,9 @@ class SampleServiceTest {
                 anyLong(), sampleEntity.getTitle(), sampleEntity.getDescription()
             );
 
-        assertEquals(map.get("msg"), null);
+        assertAll(
+            ()->assertEquals(map.get("msg"), null)
+        );
     }
 
     @Test
@@ -108,7 +117,9 @@ class SampleServiceTest {
 
         Map<String, Object> map = this.sampleService.delete(anyLong());
 
-        assertEquals(map.get("msg"), null);
+        assertAll(
+            ()->assertEquals(map.get("msg"), null)
+        );
     }
 
     private Page<SampleEntity> page = new Page<>() {
